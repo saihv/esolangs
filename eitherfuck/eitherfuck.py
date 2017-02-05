@@ -34,7 +34,7 @@ class EF:
             return self.cmds[self.cmds.index(cmd)+1]
         else:
             return self.cmds[self.cmds.index(cmd)-1]
-        
+
     def BFify(self, EFcode):
         midPtr = int(len(EFcode)/2)
         ctr = 1
@@ -43,19 +43,15 @@ class EF:
             BFcode.append(EFcode[midPtr+ctr]) if EFcode[midPtr+ctr] != '#' else EFcode
             BFcode.append(self.opposite(EFcode[midPtr-ctr])) if EFcode[midPtr-ctr] != '#' else EFcode
             ctr += 1
-            
         return BFcode
 
     def process(self, code):
         code = self.BFify(self.minify(code))
         self.loopLoc = self.identifyLoops(code)
-
-        midPtr = (len(code)+1)/2
         while self.loc < len(code):
             cmd = code[self.loc]
             if cmd in instructions:
                 instructions[cmd](self)
-
             self.loc += 1
 
     def minify(self, code):
@@ -63,7 +59,6 @@ class EF:
 
     def identifyLoops(self, code):
         sbList, loopLoc = [], {}
-
         for idx, cmd in enumerate(code):
             if cmd == '[': sbList.append(idx)
             if cmd == ']': start = sbList.pop();  loopLoc[start] = idx;  loopLoc[idx] = start
