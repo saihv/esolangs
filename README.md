@@ -13,3 +13,5 @@ Hello World for example, would be:
 ```
 
 eitherfuck/converter.py contains a converter from Brainfuck to Eitherfuck.
+
+eitherfuck/musicode.py reads an Eitherfuck code file and plays it as musical notes, with the eight instructions mapping to eight musical notes (C1 - C2). The audio files were obtained from https://github.com/pffy/wav-piano-sound.
