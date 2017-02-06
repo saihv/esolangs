@@ -69,8 +69,11 @@ instructions = {
 
 def main():
     Brainfuck = BF()
-    f = open('..\examples\example.bf', 'r')
-    Brainfuck.process(f.read())
-    f.close()
+    if len(sys.argv) == 2:
+        f = open(sys.argv[1], 'r')
+        Brainfuck.process(f.read())
+        f.close()
+    else:
+        print("Please provide path to .bf file.")
 
 if __name__ == '__main__': main()

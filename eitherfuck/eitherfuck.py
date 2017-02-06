@@ -5,7 +5,7 @@ class EF:
     values, loc, ptr = [0], 0, 0
     cmds = ['+','-','>','<','[',']','.',',']
     loopLoc = {}
-    
+
     def increment(self):
       self.ptr += 1
       if self.ptr == len(self.values): self.values.append(0)
@@ -77,8 +77,11 @@ instructions = {
 
 def main():
     Eitherfuck = EF()
-    f = open('..\examples\example.ef', 'r')
-    Eitherfuck.process(f.read())
-    f.close()
+    if len(sys.argv) == 2:
+        f = open(sys.argv[1], 'r')
+        Eitherfuck.process(f.read())
+        f.close()
+    else:
+        print("Please provide path to .ef file")
 
 if __name__ == '__main__': main()
